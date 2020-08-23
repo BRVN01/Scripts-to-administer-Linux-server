@@ -11,7 +11,7 @@ echo -e "\nCria os usuários para ambientes onde o /home já exista, cria os usu
 local_passwd="$1"
 local_shadow="$2"
 
-users="$(sort <<< "$(grep -E ':x:[0-9]{4,}' passwd)")"
+users="$(sort <<< "$(grep -E ':x:[0-9]{4,}' "$local_passwd")")"
 
 # Remover o X do passwd
 var_passwd="$(sed 's/:x:/:/' <<< "$users")"
