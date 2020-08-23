@@ -13,7 +13,7 @@ local_shadow="$2"
 
 users="$(sort <<< "$(grep -E ':x:[0-9]{4,}' passwd)")"
 
-# Rmover o X do passwd
+# Remover o X do passwd
 var_passwd="$(sed 's/:x:/:/' <<< "$users")"
 
 # Ajeita tudo
