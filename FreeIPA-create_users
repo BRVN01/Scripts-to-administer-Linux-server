@@ -9,5 +9,5 @@ while read first last username completeName email group
 do
 	echo "ipa user-find --email=${email}"
 	echo "ipa user-add ${username} --first=${first} --last=${last} --email=${email} --shell=/bin/csh --cn=\"${completeName}\" --password"
-	echo -e "ipa group-add-member GROUP-NAME --users=${username}\n\n"
+	echo -e "ipa group-add-member ${group} --users=${username}\n\n"
 done <<<"$names"
