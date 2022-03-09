@@ -1,13 +1,14 @@
 #!/bin/bash
 
-names='First-name;last-name;username;email;group 
-First-name;last-name;username;email;group'
+names='FirstName;LastName;UserName;CompleteName;Email;Group 
+FirstName;LastName;UserName;CompleteName;Email;Group'
 
 export IFS=";"
 
-while read first last username email group
+while read first last username completeName email group
 do
-	echo "ipa user-add ${username} --first=${first} --last=${last} --email=${email} --shell=/bin/csh --password"
-	echo "ipa group-add-member GROUP-NAME --users=${username}"
-	echo "ipa user-find --email=${email}"
+        echo "ipa user-find --email=${email}"
+        echo "ipa user-add ${username} --first=${first} --last=${last} --email=${email} --shell=/bin/csh --cn=${completeName} --groups=${group} --password"
+#       echo "ipa group-add-member GROUP-NAME --users=${username}"
 done <<<"$names"
+
